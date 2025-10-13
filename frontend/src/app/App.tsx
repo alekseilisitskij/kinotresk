@@ -1,5 +1,5 @@
 import { classNames } from "../shared/lib/classNames/classNames";
-import { useTheme } from "./providers/ThemeProvider/lib/useTheme";
+import { useTheme } from "./providers/ThemeProvider/index";
 
 const App = () => {
   const { toggleTheme } = useTheme();
