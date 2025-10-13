@@ -1,8 +1,14 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { classNames } from "../shared/lib/classNames/classNames";
+import { useTheme } from "./providers/ThemeProvider/lib/useTheme";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <h1>dfsd</h1>
-  </StrictMode>
-);
+const App = () => {
+  const { toggleTheme } = useTheme();
+  return (
+    <div className={classNames("app")}>
+      <h1>dfsd</h1>
+      <button onClick={toggleTheme}>click</button>
+    </div>
+  );
+};
+
+export default App;

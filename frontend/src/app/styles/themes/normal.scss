@@ -1,9 +1,7 @@
-:root {
-    --bg-color: #e8e8ea;
-    --inverted-bg-color: #090949;
-
-    --primary-color: #0232c2;
-    --secondary-color: #0449e0;
-    --inverted-primary-color: #049604;
-    --inverted-secondary-color: #04ff04;
+:root[data-theme="dark"] {
+  --bg-color: #282828;
+  --main-bg-color: #0d1a2d;
+  --primary-color: #fff;
+  --secondary-color: rgba(255, 255, 255, 0.7);
+  --accent-color: #000;
 }
