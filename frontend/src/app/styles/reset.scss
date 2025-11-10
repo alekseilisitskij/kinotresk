@@ -1,8 +1,3 @@
-/* ===============================
-   Modern SCSS Reset (by Alex)
-   =============================== */
-
-/* --- Глобальные сбросы --- */
 *,
 *::before,
 *::after {
@@ -47,7 +42,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   color: #111;
   background-color: #fff;
 }
@@ -136,7 +131,7 @@ table {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
+  clip-path: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
 }
