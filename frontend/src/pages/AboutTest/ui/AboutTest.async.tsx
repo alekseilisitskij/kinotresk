@@ -3,8 +3,7 @@ import { lazy } from "react";
 export const AboutTestAsync = lazy(
   () =>
     new Promise((resolve) => {
-      // @ts-ignore
-      // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!! ДЕЛАЕМ ДЛЯ КУРСА!
+      // @ts-expect-error this exampel
       setTimeout(() => resolve(import("./AboutTest")), 1500);
     })
 );
