@@ -1,28 +1,55 @@
 {
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    /* Core */
     "target": "ES2022",
-    "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    // Указывает версию JavaScript, в которую TypeScript будет транслировать код. ES2022 — современный стандарт с последними возможностями языка
     "module": "ESNext",
-    "types": ["vite/client"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
+    // для Vite и ESM
     "moduleResolution": "bundler",
+    // Как TypeScript ищет модули. node — стандартное поведение Node.js. bundler — оптимизировано для сборщиков типа Vite/Webpack.
+    "esModuleInterop": true,
+    // Позволяет правильно импортировать CommonJS модули через import x from "..."
+    "allowSyntheticDefaultImports": true,
+    // Позволяет писать import React from "react" даже если модуль не имеет default export.
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+    // Разрешает импорт файлов с расширением .ts или .tsx прямо через import.
+    "verbatimModuleSyntax": false,
+    // Отключает строгую проверку на “чистые ESM” и позволяет TypeScript адаптировать синтаксис модулей под цель.
+    /* JSX */
     "jsx": "react-jsx",
+    // Использует новый JSX-трансформер React 17+ (import React не обязателен).
+    "useDefineForClassFields": true,
+    // Генерация полей классов с помощью define вместо присвоения через this.field = value.
 
-    /* Linting */
+    /* Libraries */
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    // Определяет доступные типы. Здесь стандартные возможности JS + работа с DOM.
+    "types": ["vite/client", "jest", "react", "react-dom"],
+    // Подключает типы Vite (import.meta.env и т.д.).
+
+    /* Strictness / Linting */
     "strict": true,
+    // Включает все строгие проверки TypeScript (strictNullChecks, noImplicitAny и т.д.).
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": false, // изменил для enum
+    // Ошибка при неиспользуемых переменных или параметрах функции.
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    // Ошибка, если switch падает через case без break.
+    "noUncheckedSideEffectImports": true,
+    // Ошибка при импорте модулей, которые потенциально имеют побочные эффекты без явного использования.
+    "skipLibCheck": true,
+    // Не проверяет типы в node_modules, ускоряет компиляцию.
+
+    /* Build */
+    "noEmit": true,
+    // Не генерировать JS-файлы при компиляции (Vite сам компилирует TS).
+    "moduleDetection": "force",
+    // Принудительно определяет все файлы как модули.
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
+    // Файл с информацией о предыдущей компиляции для ускорения следующего запуска TypeScript.
   },
-  "include": ["src", "vite.config.ts", "global.d.ts"]
+  "include": ["src", "vite.config.ts", "global.d.ts", "babel.config.js"],
+  // Какие файлы TypeScript будет учитывать.
+  "exclude": ["node_modules", "dist"]
+  // Какие файлы игнорировать.
 }
