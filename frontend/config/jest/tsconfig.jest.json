@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    // Jest по умолчанию работает с CommonJS модулями, поэтому для тестов это корректно.
+    "esModuleInterop": true,
+    // Позволяет корректно импортировать CommonJS модули через import x from "...".
+    "allowSyntheticDefaultImports": true,
+    // Позволяет писать import React from "react" даже если модуль не имеет default export.
+    // Часто дублирует esModuleInterop, но безопасно оставить.
+    "verbatimModuleSyntax": false,
+    // Позволяет TypeScript адаптировать синтаксис модулей под CommonJS/ESM.
+    // В тестах важно, чтобы TS не ругался на import/export.
+    "isolatedModules": false,
+    // Если true, TS компилирует каждый файл отдельно (важно для Babel или SWC).
+    // Для Jest с ts-jest можно оставить false, чтобы использовать полные возможности TypeScript.
+    "types": ["jest"]
+  },
+  "include": [
+    "../../src/**/*.test.ts",
+    "../../src/**/*.test.tsx",
+    "../../src/**/__tests__/**/*.{ts,tsx}"
+  ]
+}

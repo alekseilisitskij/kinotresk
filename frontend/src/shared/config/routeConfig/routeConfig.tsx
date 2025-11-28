@@ -1,29 +1,25 @@
 import { type RouteProps } from "react-router-dom";
-import { MainTest } from "../../../pages/MainTest/index";
-import { Suspense } from "react";
-import { AboutTest } from "../../../pages/AboutTest/index";
+import { Main } from "../../../pages/Main/index";
+import { NotFoundPage } from "../../../pages/NotFoundPage/index";
+// import { lazy } from "react";
 
 export enum AppRoutes {
   MAIN = "main",
-  ABOUT = "about",
+  NOT_FOUND = "not_found",
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
-  [AppRoutes.ABOUT]: "/about",
+  [AppRoutes.NOT_FOUND]: "*",
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.main,
-    element: <MainTest />,
+    element: <Main />,
   },
-  [AppRoutes.ABOUT]: {
-    path: RoutePath.about,
-    element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <AboutTest />
-      </Suspense>
-    ),
+  [AppRoutes.NOT_FOUND]: {
+    path: RoutePath.not_found,
+    element: <NotFoundPage />,
   },
 };
